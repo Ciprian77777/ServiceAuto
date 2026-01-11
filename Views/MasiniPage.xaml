@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ServiceAuto.Views.MasiniPage"
+             Title="Mașini">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="➕ Adaugă" 
+                     Clicked="OnAdaugaMasinaClicked" />
+    </ContentPage.ToolbarItems>
+
+    <Grid RowDefinitions="Auto,*">
+
+        <SearchBar x:Name="SearchBar"
+                   Grid.Row="0"
+                   Placeholder="Caută mașină..."
+                   TextChanged="OnSearchTextChanged"
+                   Margin="10" />
+
+        <CollectionView x:Name="MasiniCollectionView"
+                        Grid.Row="1"
+                        SelectionMode="Single">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="15"
+                           Margin="10,5"
+                           CornerRadius="10"
+                           BackgroundColor="White"
+                           HasShadow="True">
+
+                        <Grid ColumnDefinitions="*,Auto"
+                              RowDefinitions="Auto,Auto,Auto,Auto">
+
+                            <Label Grid.Column="0"
+                                   Text="{Binding DisplayText}"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="#2C3E50" />
+
+                            <Label Grid.Row="1"
+                                   Grid.Column="0"
+                                   Text="{Binding NrInmatriculare}"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#3498DB" />
+
+                            <HorizontalStackLayout Grid.Row="2"
+                                                   Grid.Column="0"
+                                                   Spacing="10">
+                                <Label Text="{Binding AnFabricatie}"
+                                       FontSize="12"
+                                       TextColor="#7F8C8D" />
+                                <Label Text="•"
+                                       FontSize="12"
+                                       TextColor="#7F8C8D" />
+                                <Label Text="{Binding Culoare}"
+                                       FontSize="12"
+                                       TextColor="#7F8C8D" />
+                                <Label Text="•"
+                                       FontSize="12"
+                                       TextColor="#7F8C8D" />
+                                <Label Text="{Binding Combustibil}"
+                                       FontSize="12"
+                                       TextColor="#7F8C8D" />
+                            </HorizontalStackLayout>
+
+                            <Label Grid.Row="3"
+                                   Grid.Column="0"
+                                   Text="{Binding Kilometraj, StringFormat='{0:N0} km'}"
+                                   FontSize="12"
+                                   FontAttributes="Bold"
+                                   TextColor="#E74C3C" />
+
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>

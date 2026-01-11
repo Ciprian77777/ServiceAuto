@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ServiceAuto.Views.DetaliiInterventiePage"
+             Title="Detalii intervenție">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="📋 Piese"
+                     Clicked="OnPieseClicked" />
+        <ToolbarItem Text="✅ Finalizează"
+                     Clicked="OnFinalizeazaClicked"
+                     IsEnabled="{Binding PoateFiFinalizata}" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20">
+
+            <Frame CornerRadius="15"
+                   BackgroundColor="{Binding StatusColor}"
+                   Padding="20"
+                   HasShadow="True">
+
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="{Binding Interventie.Descriere}"
+                           FontSize="18"
+                           TextColor="White"
+                           FontAttributes="Bold" />
+
+                    <Label Text="{Binding Interventie.StatusDisplay}"
+                           FontSize="16"
+                           TextColor="White"
+                           FontAttributes="Bold" />
+
+                    <Label Text="{Binding Interventie.DataProgramare, StringFormat='📅 {0:dd.MM.yyyy HH:mm}'}"
+                           FontSize="14"
+                           TextColor="White" />
+
+                    <Label Text="{Binding Interventie.TipInterventie}"
+                           FontSize="14"
+                           TextColor="White" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame CornerRadius="10"
+                   BackgroundColor="White"
+                   Padding="15"
+                   HasShadow="True">
+
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="👤 Client și Mașină"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="#2C3E50" />
+
+                    <Label x:Name="ClientLabel"
+                           Text=""
+                           FontSize="14"
+                           TextColor="#7F8C8D" />
+
+                    <Label x:Name="MasinaLabel"
+                           Text=""
+                           FontSize="14"
+                           TextColor="#7F8C8D" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Grid ColumnDefinitions="*,*"
+                  RowDefinitions="Auto,Auto"
+                  ColumnSpacing="15"
+                  RowSpacing="15">
+
+                <Frame Grid.Row="0" Grid.Column="0"
+                       CornerRadius="10"
+                       BackgroundColor="#2ECC71"
+                       Padding="15">
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="{Binding CostManopera, StringFormat='{0:F2} RON'}"
+                               FontSize="20"
+                               TextColor="White"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center" />
+                        <Label Text="Manoperă"
+                               FontSize="12"
+                               TextColor="White"
+                               HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame Grid.Row="0" Grid.Column="1"
+                       CornerRadius="10"
+                       BackgroundColor="#3498DB"
+                       Padding="15">
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="{Binding CostPiese, StringFormat='{0:F2} RON'}"
+                               FontSize="20"
+                               TextColor="White"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center" />
+                        <Label Text="Piese"
+                               FontSize="12"
+                               TextColor="White"
+                               HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame Grid.Row="1" Grid.Column="0"
+                       Grid.ColumnSpan="2"
+                       CornerRadius="10"
+                       BackgroundColor="#2C3E50"
+                       Padding="15">
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="{Binding CostTotal, StringFormat='Total: {0:F2} RON'}"
+                               FontSize="22"
+                               TextColor="White"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center" />
+                        <Label Text="{Binding Interventie.OreManopera, StringFormat='{0} ore manoperă'}"
+                               FontSize="14"
+                               TextColor="#BDC3C7"
+                               HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+            </Grid>
+
+            <Frame CornerRadius="10"
+                   BackgroundColor="White"
+                   Padding="15"
+                   HasShadow="True">
+
+                <VerticalStackLayout Spacing="10">
+                    <HorizontalStackLayout>
+                        <Label Text="📦 Piese folosite"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               TextColor="#2C3E50" />
+                        <Label x:Name="PieseCountLabel"
+                               Text="(0)"
+                               FontSize="14"
+                               TextColor="#7F8C8D"
+                               Margin="10,0,0,0" />
+                    </HorizontalStackLayout>
+
+                    <CollectionView x:Name="PieseCollectionView"
+                                    HeightRequest="150">
+                        <CollectionView.EmptyView>
+                            <Label Text="Nu s-au adăugat piese pentru această intervenție."
+                                   FontSize="14"
+                                   TextColor="Gray"
+                                   HorizontalOptions="Center"
+                                   Margin="0,20" />
+                        </CollectionView.EmptyView>
+                    </CollectionView>
+
+                    <Button Text="➕ Adaugă piesă"
+                            BackgroundColor="#9B59B6"
+                            TextColor="White"
+                            CornerRadius="10"
+                            HeightRequest="40"
+                            Clicked="OnAdaugaPiesaClicked" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame CornerRadius="10"
+                   BackgroundColor="White"
+                   Padding="15"
+                   HasShadow="True">
+
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="📝 Observații"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="#2C3E50" />
+
+                    <Label x:Name="ObservatiiLabel"
+                           Text="{Binding Interventie.Observatii}"
+                           FontSize="14"
+                           TextColor="#7F8C8D" />
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

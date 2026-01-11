@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ServiceAuto.Views.AdaugaMasinaPage"
+             Title="{Binding Title}">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="15" Padding="20">
+
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Client proprietar *"
+                       FontSize="14"
+                       FontAttributes="Bold"
+                       TextColor="#2C3E50" />
+                <Picker x:Name="ClientPicker"
+                        Title="Selectează client"
+                        ItemDisplayBinding="{Binding Nume}" />
+            </VerticalStackLayout>
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="15">
+                <VerticalStackLayout Grid.Column="0" Spacing="5">
+                    <Label Text="Marcă *"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#2C3E50" />
+                    <Entry x:Name="MarcaEntry"
+                           Placeholder="ex: Volkswagen"
+                           Text="{Binding Masina.Marca}" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Column="1" Spacing="5">
+                    <Label Text="Model *"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#2C3E50" />
+                    <Entry x:Name="ModelEntry"
+                           Placeholder="ex: Golf 7"
+                           Text="{Binding Masina.Model}" />
+                </VerticalStackLayout>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="15">
+                <VerticalStackLayout Grid.Column="0" Spacing="5">
+                    <Label Text="An fabricație"
+                           FontSize="14"
+                           TextColor="#2C3E50" />
+                    <Entry x:Name="AnEntry"
+                           Placeholder="ex: 2015"
+                           Keyboard="Numeric"
+                           MaxLength="4"
+                           Text="{Binding Masina.AnFabricatie}" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Column="1" Spacing="5">
+                    <Label Text="Număr înmatriculare *"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#2C3E50" />
+                    <Entry x:Name="NrInmatriculareEntry"
+                           Placeholder="ex: B-123-ABC"
+                           Text="{Binding Masina.NrInmatriculare}" />
+                </VerticalStackLayout>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="15">
+                <VerticalStackLayout Grid.Column="0" Spacing="5">
+                    <Label Text="Culoare"
+                           FontSize="14"
+                           TextColor="#2C3E50" />
+                    <Entry x:Name="CuloareEntry"
+                           Placeholder="ex: Alb"
+                           Text="{Binding Masina.Culoare}" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Column="1" Spacing="5">
+                    <Label Text="Combustibil"
+                           FontSize="14"
+                           TextColor="#2C3E50" />
+                    <Picker x:Name="CombustibilPicker"
+                            ItemsSource="{Binding TipuriCombustibil}"
+                            SelectedItem="{Binding Masina.Combustibil}" />
+                </VerticalStackLayout>
+            </Grid>
+
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Kilometraj"
+                       FontSize="14"
+                       TextColor="#2C3E50" />
+                <Entry x:Name="KilometrajEntry"
+                       Placeholder="ex: 145000"
+                       Keyboard="Numeric"
+                       Text="{Binding Masina.Kilometraj}" />
+            </VerticalStackLayout>
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="15" Margin="0,20,0,0">
+                <Button Grid.Column="0"
+                        Text="Anulează"
+                        BackgroundColor="#95A5A6"
+                        TextColor="White"
+                        CornerRadius="10"
+                        HeightRequest="50"
+                        Clicked="OnCancelClicked" />
+
+                <Button Grid.Column="1"
+                        Text="{Binding SaveButtonText}"
+                        BackgroundColor="#3498DB"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="10"
+                        HeightRequest="50"
+                        Clicked="OnSaveClicked" />
+            </Grid>
+
+            <Label x:Name="ErrorMessage"
+                   Text=""
+                   TextColor="Red"
+                   IsVisible="False"
+                   HorizontalOptions="Center"
+                   Margin="0,10,0,0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

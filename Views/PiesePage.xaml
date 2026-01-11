@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ServiceAuto.Views.PiesePage"
+             Title="Piese de schimb">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="➕ Adaugă" 
+                     Clicked="OnAdaugaPiesaClicked" 
+                     IconImageSource="add.png" />
+    </ContentPage.ToolbarItems>
+
+    <RefreshView x:Name="RefreshView"
+                 IsRefreshing="False"
+                 Command="{Binding LoadPieseCommand}"
+                 RefreshColor="#3498DB">
+
+        <Grid RowDefinitions="Auto,*,Auto">
+
+            <SearchBar x:Name="SearchBar"
+                       Grid.Row="0"
+                       Placeholder="Caută piesă..."
+                       TextChanged="OnSearchTextChanged"
+                       Margin="10" />
+
+            <CollectionView x:Name="PieseCollectionView"
+                            Grid.Row="1"
+                            ItemsSource="{Binding Piese}"
+                            SelectionMode="None"
+                            EmptyView="Nu există piese în stoc.">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItem Text="✏️"
+                                           BackgroundColor="#3498DB"
+                                           Invoked="OnEditPiesaClicked" />
+                                <SwipeItem Text="🗑️"
+                                           BackgroundColor="#E74C3C"
+                                           Invoked="OnDeletePiesaClicked" />
+                            </SwipeView.RightItems>
+
+                            <Frame Padding="15"
+                                   Margin="10,5"
+                                   CornerRadius="10"
+                                   BackgroundColor="White"
+                                   HasShadow="True">
+
+                                <Grid ColumnDefinitions="Auto,*,Auto"
+                                      RowDefinitions="Auto,Auto,Auto">
+
+                                    <BoxView Grid.Column="0"
+                                             Grid.RowSpan="3"
+                                             WidthRequest="5"
+                                             Margin="0,0,10,0">
+                                        <BoxView.Color>
+                                            <Binding Path="StocColor" />
+                                        </BoxView.Color>
+                                    </BoxView>
+
+                                    <VerticalStackLayout Grid.Column="1">
+                                        <Label Text="{Binding Denumire}"
+                                               FontSize="16"
+                                               FontAttributes="Bold"
+                                               TextColor="#2C3E50" />
+                                        <Label Text="{Binding Cod}"
+                                               FontSize="12"
+                                               TextColor="#7F8C8D" />
+                                    </VerticalStackLayout>
+
+                                    <Label Grid.Column="2"
+                                           Text="{Binding Pret, StringFormat='{0:F2} RON'}"
+                                           FontSize="16"
+                                           FontAttributes="Bold"
+                                           TextColor="#2C3E50"
+                                           HorizontalOptions="End" />
+
+                                    <HorizontalStackLayout Grid.Column="1"
+                                                           Grid.Row="1"
+                                                           Spacing="10">
+                                        <Label Text="{Binding Producator}"
+                                               FontSize="12"
+                                               TextColor="#7F8C8D" />
+                                        <Label Text="•"
+                                               FontSize="12"
+                                               TextColor="#7F8C8D" />
+                                        <Label Text="{Binding Categorie}"
+                                               FontSize="12"
+                                               TextColor="#7F8C8D" />
+                                    </HorizontalStackLayout>
+
+                                    <HorizontalStackLayout Grid.Column="1"
+                                                           Grid.Row="2"
+                                                           Grid.ColumnSpan="2"
+                                                           Spacing="15"
+                                                           VerticalOptions="End">
+                                        <Label Text="{Binding Stoc, StringFormat='Stoc: {0}'}"
+                                               FontSize="12"
+                                               FontAttributes="Bold" />
+                                        <Label Text="{Binding StocStatus}"
+                                               FontSize="12"
+                                               FontAttributes="Bold">
+                                            <Label.TextColor>
+                                                <Binding Path="StocColor" />
+                                            </Label.TextColor>
+                                        </Label>
+                                    </HorizontalStackLayout>
+
+                                </Grid>
+                            </Frame>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Frame Grid.Row="2"
+                   BackgroundColor="#2C3E50"
+                   CornerRadius="10"
+                   Padding="15"
+                   Margin="10"
+                   HasShadow="True">
+                <HorizontalStackLayout HorizontalOptions="Center"
+                                       Spacing="20">
+                    <Label Text="{Binding TotalPiese, StringFormat='Total piese: {0}'}"
+                           TextColor="White"
+                           FontSize="14" />
+                    <Label Text="{Binding ValoareTotala, StringFormat='Valoare totală: {0:F2} RON'}"
+                           TextColor="White"
+                           FontSize="14"
+                           FontAttributes="Bold" />
+                </HorizontalStackLayout>
+            </Frame>
+
+        </Grid>
+    </RefreshView>
+</ContentPage>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ServiceAuto.Views.LoginPage"
+             Title="Autentificare">
+
+    <Grid RowDefinitions="*,Auto,*" 
+          ColumnDefinitions="*,Auto,*"
+          BackgroundColor="#ECF0F1">
+
+        <Frame Grid.Row="1" 
+               Grid.Column="1" 
+               CornerRadius="20"
+               BackgroundColor="White"
+               HasShadow="True"
+               BorderColor="#3498DB"
+               Padding="30"
+               WidthRequest="380">
+
+            <VerticalStackLayout Spacing="25">
+
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="15">
+                    <Label Text="🔧" FontSize="45" />
+                    <VerticalStackLayout>
+                        <Label Text="Service Auto" 
+                               FontSize="28" 
+                               FontAttributes="Bold" 
+                               TextColor="#2C3E50" />
+                        <Label Text="Management profesionist" 
+                               FontSize="14" 
+                               TextColor="#7F8C8D" />
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Email" 
+                           FontSize="14" 
+                           TextColor="#2C3E50"
+                           FontAttributes="Bold" />
+
+                    <Entry x:Name="EmailEntry"
+                           Placeholder="mecanic@service.ro"
+                           Keyboard="Email"
+                           Text="mecanic@service.ro" />
+
+                    <Label Text="Parolă" 
+                           FontSize="14" 
+                           TextColor="#2C3E50"
+                           FontAttributes="Bold"
+                           Margin="0,10,0,0" />
+
+                    <Entry x:Name="PasswordEntry"
+                           Placeholder="••••••••"
+                           IsPassword="True"
+                           Text="123456" />
+                </VerticalStackLayout>
+
+                <Button x:Name="LoginButton"
+                        Text="AUTENTIFICARE"
+                        BackgroundColor="#3498DB"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        Margin="0,10,0,0"
+                        HeightRequest="50"
+                        CornerRadius="10"
+                        Clicked="LoginButton_Clicked" />
+
+                <Button Text="📝 Nu am cont - Înregistrare"
+                        Clicked="OnInregistrareClicked"
+                        BackgroundColor="Transparent"
+                        TextColor="#2196F3"/>
+                
+                <Label x:Name="ErrorMessage"
+                       Text=""
+                       TextColor="Red"
+                       IsVisible="False"
+                       HorizontalOptions="Center"
+                       Margin="0,10,0,0" />
+
+                <BoxView HeightRequest="1" 
+                         Color="#ECF0F1" 
+                         Margin="0,20,0,10" />
+
+                <Label Text="© 2024 Service Auto • Versiune 1.0" 
+                       FontSize="12" 
+                       TextColor="#95A5A6"
+                       HorizontalOptions="Center" />
+
+            </VerticalStackLayout>
+        </Frame>
+
+    </Grid>
+</ContentPage>

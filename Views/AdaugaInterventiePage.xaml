@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ServiceAuto.Views.AdaugaInterventiePage"
+             Title="Adaugă Intervenție">
+
+    <VerticalStackLayout Spacing="15" Padding="20">
+
+        <Label Text="🔧 Adaugă intervenție nouă"
+               FontSize="20"
+               FontAttributes="Bold"
+               HorizontalOptions="Center" />
+
+        <Entry x:Name="DescriereEntry"
+               Placeholder="Descriere intervenție" />
+
+        <Entry x:Name="ClientIdEntry"
+               Placeholder="ID Client"
+               Keyboard="Numeric" />
+
+        <Entry x:Name="MasinaIdEntry"
+               Placeholder="ID Mașină"
+               Keyboard="Numeric" />
+
+        <Button Text="Salvează"
+                Clicked="OnSaveClicked"
+                BackgroundColor="#3498DB"
+                TextColor="White"
+                HeightRequest="50"
+                CornerRadius="10" />
+
+        <Button Text="Anulează"
+                Clicked="OnCancelClicked"
+                BackgroundColor="#95A5A6"
+                TextColor="White"
+                HeightRequest="50"
+                CornerRadius="10" />
+
+        <Label x:Name="ErrorMessage"
+               Text=""
+               TextColor="Red"
+               IsVisible="False"
+               HorizontalOptions="Center" />
+
+    </VerticalStackLayout>
+</ContentPage>

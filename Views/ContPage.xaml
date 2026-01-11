@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ServiceAuto.Views.ContPage"
+             Title="👤 Contul meu">
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="20">
+
+            <Label Text="👤 Profilul meu" 
+                   FontSize="24" 
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+
+            <Frame CornerRadius="10" Padding="15">
+                <StackLayout Spacing="15">
+                    <Label Text="Date personale" 
+                           FontSize="18" 
+                           FontAttributes="Bold"/>
+
+                    <StackLayout>
+                        <Label Text="Nume complet" 
+                               FontSize="14" 
+                               TextColor="Gray"/>
+                        <Entry x:Name="NumeEntry"
+                               Placeholder="Introdu numele..."
+                               Text="{Binding Nume}"/>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <Label Text="Email" 
+                               FontSize="14" 
+                               TextColor="Gray"/>
+                        <Entry x:Name="EmailEntry"
+                               Placeholder="ex: nume@email.com"
+                               Keyboard="Email"
+                               Text="{Binding Email}"/>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <Label Text="Telefon" 
+                               FontSize="14" 
+                               TextColor="Gray"/>
+                        <Entry x:Name="TelefonEntry"
+                               Placeholder="ex: 0722 123 456"
+                               Keyboard="Telephone"
+                               Text="{Binding Telefon}"/>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <Label Text="Parolă nouă (lasă gol pentru a păstra vechea)" 
+                               FontSize="14" 
+                               TextColor="Gray"/>
+                        <Entry x:Name="ParolaEntry"
+                               Placeholder="Introdu parola nouă..."
+                               IsPassword="True"/>
+                    </StackLayout>
+
+                    <Button Text="💾 Salvează modificările"
+                            Clicked="OnSalveazaClicked"
+                            BackgroundColor="#2196F3"
+                            TextColor="White"
+                            CornerRadius="10"
+                            HeightRequest="50"/>
+
+                </StackLayout>
+            </Frame>
+
+            <Frame CornerRadius="10" Padding="15">
+                <StackLayout Spacing="15">
+                    <Label Text="Setări cont" 
+                           FontSize="18" 
+                           FontAttributes="Bold"/>
+
+                    <Button Text="🚪 Deconectare"
+                            Clicked="OnLogoutClicked"
+                            BackgroundColor="LightGray"
+                            TextColor="Black"
+                            CornerRadius="10"/>
+
+                    <Button Text="🗑️ Șterge contul"
+                            Clicked="OnStergeContClicked"
+                            BackgroundColor="#F44336"
+                            TextColor="White"
+                            CornerRadius="10"/>
+
+                </StackLayout>
+            </Frame>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

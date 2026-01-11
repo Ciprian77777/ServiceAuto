@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ServiceAuto.Views.InterventiiClientPage"
+             Title="Intervenții Client">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="←" 
+                     Command="{Binding BackCommand}"
+                     Order="Primary"/>
+    </ContentPage.ToolbarItems>
+
+    <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                 Command="{Binding LoadInterventiiCommand}">
+
+        <CollectionView ItemsSource="{Binding Interventii}"
+                        EmptyView="Nu există intervenții pentru acest client.">
+
+            <CollectionView.Header>
+                <StackLayout Padding="10" BackgroundColor="#2196F3">
+                    <Label Text="{Binding ClientInfo}" 
+                           TextColor="White" 
+                           FontSize="18" 
+                           HorizontalOptions="Center"/>
+                    <Label Text="📋 Lista intervențiilor" 
+                           TextColor="White" 
+                           FontSize="14" 
+                           HorizontalOptions="Center"/>
+                </StackLayout>
+            </CollectionView.Header>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="10,5" Padding="10" CornerRadius="10">
+                        <Grid ColumnDefinitions="Auto,*,Auto"
+                              RowDefinitions="Auto,Auto,Auto">
+
+                            <Label Grid.Row="0" Grid.Column="0"
+                                   Text="{Binding StatusIcon}"
+                                   FontSize="20"/>
+
+                            <Label Grid.Row="0" Grid.Column="1"
+                                   Text="{Binding Descriere}"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   LineBreakMode="WordWrap"/>
+
+                            <Button Grid.Row="0" Grid.Column="2"
+                                    Text="👉"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#2196F3"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ViewDetailsCommand}"
+                                    CommandParameter="{Binding .}"/>
+
+                            <Label Grid.Row="1" Grid.Column="0"
+                                   Text="📅"
+                                   FontSize="16"/>
+                            <Label Grid.Row="1" Grid.Column="1"
+                                   Text="{Binding DataProgramare, StringFormat='{0:dd.MM.yyyy HH:mm}'}"
+                                   FontSize="14"/>
+
+                            <Label Grid.Row="2" Grid.Column="0"
+                                   Text="🚗"
+                                   FontSize="16"/>
+                            <Label Grid.Row="2" Grid.Column="1"
+                                   Text="{Binding MasinaInfo}"
+                                   FontSize="14"/>
+
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>

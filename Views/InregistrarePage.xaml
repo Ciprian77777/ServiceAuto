@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ServiceAuto.Views.InregistrarePage"
+             Title="📝 Creare cont nou">
+
+    <ScrollView>
+        <StackLayout Padding="30" Spacing="20">
+
+            <Label Text="📝 Creare cont nou" 
+                   FontSize="24" 
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+
+            <Frame CornerRadius="10" Padding="20">
+                <StackLayout Spacing="15">
+
+                    <StackLayout>
+                        <Label Text="Nume complet *" 
+                               FontSize="14" 
+                               TextColor="Gray"/>
+                        <Entry x:Name="NumeEntry"
+                               Placeholder="Introdu numele complet..."/>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <Label Text="Email *" 
+                               FontSize="14" 
+                               TextColor="Gray"/>
+                        <Entry x:Name="EmailEntry"
+                               Placeholder="ex: nume@email.com"
+                               Keyboard="Email"/>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <Label Text="Telefon" 
+                               FontSize="14" 
+                               TextColor="Gray"/>
+                        <Entry x:Name="TelefonEntry"
+                               Placeholder="ex: 0722 123 456"
+                               Keyboard="Telephone"/>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <Label Text="Parolă *" 
+                               FontSize="14" 
+                               TextColor="Gray"/>
+                        <Entry x:Name="ParolaEntry"
+                               Placeholder="Alege o parolă..."
+                               IsPassword="True"/>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <Label Text="Confirmă parola *" 
+                               FontSize="14" 
+                               TextColor="Gray"/>
+                        <Entry x:Name="ConfirmareParolaEntry"
+                               Placeholder="Introdu parola din nou..."
+                               IsPassword="True"/>
+                    </StackLayout>
+
+                    <Button Text="✅ Creează cont"
+                            Clicked="OnInregistrareClicked"
+                            BackgroundColor="#4CAF50"
+                            TextColor="White"
+                            CornerRadius="10"
+                            HeightRequest="50"/>
+
+                    <Button Text="← Am deja cont"
+                            Clicked="OnAmDejaContClicked"
+                            BackgroundColor="Transparent"
+                            TextColor="#2196F3"/>
+
+                </StackLayout>
+            </Frame>
+
+            <Frame CornerRadius="10" Padding="15" BackgroundColor="#E8F5E9">
+                <StackLayout>
+                    <Label Text="💡 Informații:" 
+                           FontAttributes="Bold"/>
+                    <Label Text="• Câmpurile cu * sunt obligatorii"
+                           FontSize="12"/>
+                    <Label Text="• După creare, vei fi redirecționat la login"
+                           FontSize="12"/>
+                </StackLayout>
+            </Frame>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
