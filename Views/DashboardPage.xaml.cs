@@ -42,7 +42,7 @@ public partial class DashboardPage : ContentPage
     private async void OnLogoutClicked(object sender, EventArgs e)
     {
         bool confirm = await DisplayAlert("Deconectare",
-            "Ești sigur că vrei să te deconectezi?",
+            "Esti sigur ca vrei sa te deconectezi?",
             "Da", "Nu");
 
         if (confirm)
@@ -61,10 +61,10 @@ public partial class DashboardPage : ContentPage
         await Navigation.PushAsync(new InterventiiPage());
     }
 
-    private async void OnClientiClicked(object sender, EventArgs e)
+    /*private async void OnClientiClicked(object sender, EventArgs e)
     {
-        await DisplayAlert("Info", "Pagina pentru Clienți va fi implementată în curând!", "OK");
-    }
+        await DisplayAlert("Info", "Pagina pentru Clienti va fi implementată în curând!", "OK");
+    }*/
 
     private async void OnAdaugaInterventieClicked(object sender, EventArgs e)
     {

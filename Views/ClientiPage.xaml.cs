@@ -31,7 +31,7 @@ public partial class ClientiPage : ContentPage
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Eroare", $"Eroare la înc?rcarea clien?ilor: {ex.Message}", "OK");
+            await DisplayAlert("Eroare", $"Eroare la încarcarea clientilor: {ex.Message}", "OK");
         }
     }
 
@@ -67,7 +67,7 @@ public partial class ClientiPage : ContentPage
         }
         else
         {
-            await DisplayAlert("Selectare", "Selecteaz? un client", "OK");
+            await DisplayAlert("Selectare", "Selecteaza un client", "OK");
         }
     }
 
@@ -79,7 +79,7 @@ public partial class ClientiPage : ContentPage
         }
         else
         {
-            await DisplayAlert("Selectare", "Selecteaz? un client pentru editare", "OK");
+            await DisplayAlert("Selectare", "Selecteaza un client pentru editare", "OK");
         }
     }
 
@@ -87,20 +87,20 @@ public partial class ClientiPage : ContentPage
     {
         if (ClientiCollectionView.SelectedItem is Client client)
         {
-            bool confirm = await DisplayAlert("?tergere",
-                $"E?ti sigur c? vrei s? ?tergi clientul '{client.Nume}'?",
-                "Da, ?terge", "Anuleaz?");
+            bool confirm = await DisplayAlert("Stergere",
+                $"Esti sigur ca vrei sa stergi clientul '{client.Nume}'?",
+                "Da, sterge", "Anuleaza");
 
             if (confirm)
             {
                 await _dbService.DeleteClientAsync(client);
                 LoadClienti();
-                await DisplayAlert("Succes", "Clientul a fost ?ters!", "OK");
+                await DisplayAlert("Succes", "Clientul a fost sters!", "OK");
             }
         }
         else
         {
-            await DisplayAlert("Selectare", "Selecteaz? un client pentru ?tergere", "OK");
+            await DisplayAlert("Selectare", "Selecteaza un client pentru stergere", "OK");
         }
     }
 }

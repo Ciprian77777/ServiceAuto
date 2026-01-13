@@ -141,7 +141,7 @@ namespace ServiceAuto.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Eroare", $"Nu s-au putut încărca datele: {ex.Message}", "OK");
+                await DisplayAlert("Eroare", $"Nu s-au putut incarca datele: {ex.Message}", "OK");
             }
         }
 
@@ -171,14 +171,14 @@ namespace ServiceAuto.Views
 
         private async void OnLogoutClicked(object sender, EventArgs e)
         {
-            bool confirm = await DisplayAlert("Deconectare", "Sigur doriți să vă deconectați?", "Da", "Nu");
+            bool confirm = await DisplayAlert("Deconectare", "Sigur doriti sa va deconectati?", "Da", "Nu");
             if (confirm) await Shell.Current.GoToAsync("//LoginPage");
         }
 
         private async void OnStergeContClicked(object sender, EventArgs e)
         {
-            bool confirm = await DisplayAlert("Ștergere cont", "Sigur doriți să ștergeți contul?", "Da, șterge", "Anulează");
-            if (confirm) await DisplayAlert("Info", "Funcționalitate demo", "OK");
+            bool confirm = await DisplayAlert("Stergere cont", "Sigur doriti sa stergeti contul?", "Da, sterge", "Anuleaza");
+            if (confirm) await DisplayAlert("Info", "Functionalitate demo", "OK");
         }
     }
 }

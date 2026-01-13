@@ -23,14 +23,14 @@ public partial class MasiniClientPage : ContentPage
         try
         {
             _client = await _dbService.GetClientByIdAsync(_clientId);
-            Title = $"Mașinile lui {_client.Nume}";
+            Title = $"Masinile lui {_client.Nume}";
 
             var masini = await _dbService.GetMasiniByClientAsync(_clientId);
             MasiniCollectionView.ItemsSource = masini;
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Eroare", $"Eroare la încărcarea datelor: {ex.Message}", "OK");
+            await DisplayAlert("Eroare", $"Eroare la încarcarea datelor: {ex.Message}", "OK");
         }
     }
 

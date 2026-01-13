@@ -27,13 +27,13 @@ public class DatabaseService
             await _database.CreateTableAsync<PiesaDeSchimb>();
             await _database.CreateTableAsync<InterventiePiesa>();
 
-            Debug.WriteLine("✅ Baza de date creată cu succes!");
+            Debug.WriteLine("✅ Baza de date creata cu succes!");
 
             await SeedDemoDataAsync();
         }
         catch (Exception ex)
         {
-            Debug.WriteLine($"❌ Eroare la inițializarea bazei de date: {ex.Message}");
+            Debug.WriteLine($"❌ Eroare la initializarea bazei de date: {ex.Message}");
         }
     }
 

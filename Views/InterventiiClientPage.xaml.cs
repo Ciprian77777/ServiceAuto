@@ -116,12 +116,12 @@ public partial class InterventiiClientPage : ContentPage
         }
     }
 
-    protected override bool OnBackButtonPressed()
+    /*protected override bool OnBackButtonPressed()
     {
         Device.BeginInvokeOnMainThread(async () =>
         {
             await Navigation.PopAsync();
         });
         return true;
-    }
+    }*/
 }

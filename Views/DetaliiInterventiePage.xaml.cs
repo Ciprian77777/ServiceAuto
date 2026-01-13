@@ -45,7 +45,7 @@ public partial class DetaliiInterventiePage : ContentPage
 
             if (Interventie == null)
             {
-                await DisplayAlert("Eroare", "Interventia nu a fost gasit?!", "OK");
+                await DisplayAlert("Eroare", "Interventia nu a fost gasita!", "OK");
                 await Navigation.PopAsync();
                 return;
             }
@@ -137,7 +137,7 @@ public partial class DetaliiInterventiePage : ContentPage
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Eroare la înc?rcarea pieselor: {ex.Message}");
+            Console.WriteLine($"Eroare la încarcarea pieselor: {ex.Message}");
         }
     }
 
@@ -169,7 +169,7 @@ public partial class DetaliiInterventiePage : ContentPage
 
     private async void OnAdaugaPiesaClicked(object sender, EventArgs e)
     {
-        await DisplayAlert("Info", "Adaugarea de piese la interventie va fi implementata!", "OK");
+        await Shell.Current.GoToAsync(nameof(AdaugaPiesaPage));
     }
 
     protected override void OnAppearing()

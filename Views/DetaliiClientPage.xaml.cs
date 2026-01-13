@@ -38,7 +38,7 @@ public partial class DetaliiClientPage : ContentPage
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Eroare la încărcarea statisticilor: {ex.Message}");
+            Console.WriteLine($"Eroare la încarcarea statisticilor: {ex.Message}");
         }
     }
 

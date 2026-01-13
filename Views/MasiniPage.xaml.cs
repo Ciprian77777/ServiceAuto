@@ -31,7 +31,7 @@ public partial class MasiniPage : ContentPage
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Eroare", $"Eroare la încărcarea mașinilor: {ex.Message}", "OK");
+            await DisplayAlert("Eroare", $"Eroare la incarcarea masinilor: {ex.Message}", "OK");
         }
     }
 
@@ -68,7 +68,7 @@ public partial class MasiniPage : ContentPage
         }
         else
         {
-            await DisplayAlert("Selectare", "Selectează o mașină pentru editare", "OK");
+            await DisplayAlert("Selectare", "Selecteaza o masina pentru editare", "OK");
         }
     }
 }

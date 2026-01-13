@@ -9,11 +9,11 @@ public partial class App : Application
         InitializeComponent();
         MainPage = new AppShell();
 
-        Device.StartTimer(TimeSpan.FromMilliseconds(100), () =>
+        /*Device.StartTimer(TimeSpan.FromMilliseconds(100), () =>
         {
             Shell.Current.GoToAsync("//LoginPage");
             return false;
-        });
+        });*/
 
         StartSimpleNotifications();
     }

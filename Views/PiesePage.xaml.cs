@@ -43,7 +43,7 @@ public partial class PiesePage : ContentPage
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Eroare", $"Eroare la încărcarea pieselor: {ex.Message}", "OK");
+            await DisplayAlert("Eroare", $"Eroare la incarcarea pieselor: {ex.Message}", "OK");
         }
         finally
         {
@@ -94,15 +94,15 @@ public partial class PiesePage : ContentPage
 
         if (piesa != null)
         {
-            bool confirm = await DisplayAlert("Ștergere piesă",
-                $"Ești sigur că vrei să ștergi piesa '{piesa.Denumire}'?",
-                "Da, șterge", "Anulează");
+            bool confirm = await DisplayAlert("Stergere piesa",
+                $"Esti sigur ca vrei sa stergi piesa '{piesa.Denumire}'?",
+                "Da, sterge", "Anulează");
 
             if (confirm)
             {
                 await _dbService.DeletePiesaAsync(piesa);
                 LoadPiese();
-                await DisplayAlert("Succes", "Piesa a fost ștearsă!", "OK");
+                await DisplayAlert("Succes", "Piesa a fost stearsa!", "OK");
             }
         }
     }
